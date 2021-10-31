@@ -43,5 +43,4 @@ def switch(caseSelected):
 
 if __name__ == '__main__':
     caseSelected = int(input())
-
     switch(caseSelected)

@@ -1,11 +1,10 @@
 import glfw
-import numpy as numpy
+import numpy as np
 
 from OpenGL.GL import *
 
 
 def handleQuad():
-    # initializing glfw
     glfw.init()
     width = 600
     height = 800
@@ -20,7 +19,7 @@ def handleQuad():
                0.5, -0.5, 0.0,
                -0.5, -0.5, 0.0]
 
-    v = numpy.array(vertice, dtype=numpy.float32)
+    v = np.array(vertice, dtype=np.float32)
     glEnableClientState(GL_VERTEX_ARRAY)
     glVertexPointer(3, GL_FLOAT, 0, v)
     glClearColor(0, 0, 0, 0)
@@ -32,19 +31,24 @@ def handleQuad():
         glfw.swap_buffers(window)
     glfw.terminate()
 
+
+    #global window
+    while not glfw.window_should_close(window):
+        glfw.poll_events()
+        glClear(GL_COLOR_BUFFER_BIT)
+        glDrawArrays(GL_QUADS, 0, 4)
+        glfw.swap_buffers(window)
+    glfw.terminate()
+
+
 def handleRotate():
-    print('rotating')
-    #has_rotate = false
-       # if (has_rotate): return
-        #has_rotate = true
-        #glRotatef(1, 0, 1, 0)
+    print('Rotating')
 
 
 def handleTranslation():
-    print('translation')
+    print('Translation')
 
 
 def handleScale():
-    print('Changing Scale')
-
+    print('Appling scale of 1.25 for every vertice')
 
